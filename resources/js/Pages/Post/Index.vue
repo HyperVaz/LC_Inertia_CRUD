@@ -3,6 +3,7 @@
         <h1 class="text-lg mb-8">Posts</h1>
         <div>
             <Link
+                :href="route('post.create')"
                 class="hover:bg-white hover:text-sky-500
                 border
                 border-sky-500 bg-sky-500 p-2 w-32 rounded-full text-center text-white">
