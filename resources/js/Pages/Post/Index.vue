@@ -1,5 +1,4 @@
 <template>
-    <div class="w-96 mx-auto pt-8">
         <h1 class="text-lg mb-8">Posts</h1>
         <div class="mb-8">
             <Link
@@ -19,13 +18,21 @@
                 <div class="text-sm">
                     <Link class="text-sky-500" :href="route('post.show', post.id)">Show</Link>
                 </div>
+
+                <div class="text-sm">
+                    <Link class="text-sky-500" :href="route('post.edit', post.id)">Edit</Link>
+                </div>
+
+                <div class="text-sm">
+                    <p @click="deletePost(post.id)" class="text-red-500 cursor-pointer">Delete</p>
+                </div>
             </div>
         </div>
-    </div>
 </template>
 
 <script>
 import {Link} from '@inertiajs/vue3'
+import MainLayout from "@/Layouts/MainLayout.vue";
 
 export default {
     name: 'Index',
@@ -35,6 +42,12 @@ export default {
     ],
     components: {
         Link,
+    },
+    layout: MainLayout,
+    methods:{
+        deletePost(id){
+            this.$inertia.delete(`/posts/${id}`)
+        }
     }
 }
 </script>
